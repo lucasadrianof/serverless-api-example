@@ -1,0 +1,31 @@
+service: express-serverless-app
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: v1
+  region: us-east-1
+  timeout: 30
+  memorySize: 512
+  package:
+    excludeDevDependencies: true
+    exclude:
+      - .git/**
+      - .vscode/**
+
+functions:
+  app:
+    handler: src/handler.run
+    events:
+      - http:
+          path: /
+          method: ANY
+          cors: true
+
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+
+plugins:
+  - serverless-offline
