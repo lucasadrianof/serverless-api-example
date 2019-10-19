@@ -19,7 +19,7 @@ class PetsController {
 
   async delete(req, res) {
     const { id } = req.params;
-    res.status(204).send({ message: `Deleted pet ${id}` });
+    res.status(204).send();
   }
 }
 
@@ -29,6 +29,6 @@ module.exports = app => {
   app.get("/pets", petsController.index);
   app.get("/pets/:id", petsController.find);
   app.post("/pets", petsController.create);
-  app.put("/pets:id", petsController.update);
+  app.put("/pets/:id", petsController.update);
   app.delete("/pets/:id", petsController.delete);
 };

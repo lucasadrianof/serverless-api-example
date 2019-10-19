@@ -6,9 +6,15 @@
     "email": "lucas.f.adriano@hotmail.com"
   },
   "main": "index.js",
+  "scripts": {
+    "dev": "export NODE_ENV=dev && serverless offline start --skipCacheInvalidation",
+    "deploy": "serverless deploy",
+    "destroy": "serverless remove"
+  },
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "config": "^3.2.3",
     "consign": "^0.1.6",
     "cors": "^2.8.5",
     "express": "^4.17.1",
